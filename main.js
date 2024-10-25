@@ -239,9 +239,9 @@
 // let talkFunction = cat.talk.bind(cat);
 // talkFunction(); // meow
 
-//----------------------------------------------------
+//-------------------------------------------------------------------------------
 
-// THIS EXERCISE
+// 'THIS' EXERCISE
 /*Use the following code to complete this exercise. Complete the makeDrink function to enable this coffee shop to operate. The makeDrink function should:
 
 - Only make a drink if it's a drink in the drinkRequirements object. Otherwise alert: "Sorry, we don't make DRINKNAME".
@@ -250,54 +250,172 @@
 
 */
 
-var coffeeShop = {
-  funds: 100,
-  beans: 40,
-  drinks: {
-    latte: { price: 4, beanRequirement: 10 },
-    americano: { price: 3, beanRequirement: 5 },
-    doubleShot: { price: 6, beanRequirement: 15 },
-    frenchPress: { price: 5, beanRequirement: 12 },
-  },
-  makeDrink: function (drinkType) {
-    if (!this.drinks[drinkType]) {
-      return alert(`Sorry, we don't make ${drinkType}s!`);
-    }
+// var coffeeShop = {
+//   funds: 100,
+//   beans: 40,
+//   drinks: {
+//     latte: { price: 4, beanRequirement: 10 },
+//     americano: { price: 3, beanRequirement: 5 },
+//     doubleShot: { price: 6, beanRequirement: 15 },
+//     frenchPress: { price: 5, beanRequirement: 12 },
+//   },
+//   makeDrink: function (drinkType) {
+//     if (!this.drinks[drinkType]) {
+//       return alert(`Sorry, we don't make ${drinkType}s!`);
+//     }
 
-    if (this.beans >= this.drinks[drinkType].beanRequirement) {
-      this.beans -= this.drinks[drinkType].beanRequirement;
-      alert(`here's your ${drinkType}!`);
-      console.log(`Remaining beans: ${this.beans}`);
-    } else {
-      alert(`Sorry, we don't have enough beans to make a ${drinkType}`);
-    }
-  },
-  buyDrink: function (drinkType) {
-    if (this.drinks[drinkType]) {
-      this.funds += this.drinks[drinkType].price;
-      this.makeDrink(drinkType);
-    }
-  },
-  buyBeans: function (spend) {
-    var beanCost = 0.1;
-    if (this.funds >= spend) {
-      this.beans += spend / beanCost;
-      this.funds -= spend;
-      alert(`The Coffee Shop now has ${this.beans} beans!`);
-      console.log(`Funds: ${this.funds}`);
-    } else {
-      alert(`We don't have that much money!`);
-    }
-  },
-};
+//     if (this.beans >= this.drinks[drinkType].beanRequirement) {
+//       this.beans -= this.drinks[drinkType].beanRequirement;
+//       alert(`here's your ${drinkType}!`);
+//       console.log(`Remaining beans: ${this.beans}`);
+//     } else {
+//       alert(`Sorry, we don't have enough beans to make a ${drinkType}`);
+//     }
+//   },
+//   buyDrink: function (drinkType) {
+//     if (this.drinks[drinkType]) {
+//       this.funds += this.drinks[drinkType].price;
+//       this.makeDrink(drinkType);
+//     }
+//   },
+//   buyBeans: function (spend) {
+//     var beanCost = 0.1;
+//     if (this.funds >= spend) {
+//       this.beans += spend / beanCost;
+//       this.funds -= spend;
+//       alert(`The Coffee Shop now has ${this.beans} beans!`);
+//       console.log(`Funds: ${this.funds}`);
+//     } else {
+//       alert(`We don't have that much money!`);
+//     }
+//   },
+// };
 
-coffeeShop.buyDrink("latte"); // - 10 beans
-coffeeShop.buyDrink("americano"); // - 5 beans
-coffeeShop.buyDrink("pourOver"); // 'sorry we don't make that'
-coffeeShop.buyDrink("doubleShot"); // - 15 beans
-coffeeShop.buyDrink("frenchPress"); // 'sorry we don't have enough beans!
+// coffeeShop.buyDrink("latte"); // - 10 beans
+// coffeeShop.buyDrink("americano"); // - 5 beans
+// coffeeShop.buyDrink("pourOver"); // 'sorry we don't make that'
+// coffeeShop.buyDrink("doubleShot"); // - 15 beans
+// coffeeShop.buyDrink("frenchPress"); // 'sorry we don't have enough beans!
 
-coffeeShop.buyBeans(10);
-coffeeShop.buyBeans(200);
+// coffeeShop.buyBeans(10);
+// coffeeShop.buyBeans(200);
 
-coffeeShop.buyDrink("latte");
+// coffeeShop.buyDrink("latte");
+
+//-------------------------------------------------------------------------------
+
+// ARRAY HELPER METHODS
+
+//-------------------------------------------------------------------------------
+
+// FOR EACH()
+
+// var numbers = [1, 2, 3, 4, 5];
+
+// for (var i = 0; i < numbers.length; i++) {
+//   console.log(numbers[i]);
+// }
+
+// var numbers = [1, 2, 3, 4, 5];
+
+// numbers.forEach(function (number) {
+//   console.log(number);
+// });
+
+// // Adding it to the Array's prototype so we can call it directly on arrays
+// Array.prototype.myForEach = function (callback) {
+//   for (let i = 0; i < this.length; i++) {
+//     callback(this[i], i, this);
+//   }
+// };
+
+// // Adding it to the Array's prototype so we can call it directly on arrays
+// Array.prototype.myForEach = function (callback) {
+//   for (let i = 0; i < this.length; i++) {
+//     callback(this[i], i, this);
+//   }
+// };
+
+// var numbers = [1, 2, 3, 4, 5];
+
+// numbers.myForEach(function (number) {
+//   console.log(number);
+// });
+
+//-------------------------------------------------------------------------------
+
+// // refactor the above code with a .forEach() method
+// var users = [
+//   { id: 15, name: "Bob" },
+//   { id: 23, name: "Jimbo" },
+//   { id: 35, name: "Cathy" },
+// ];
+
+// users.forEach(function (user) {
+//   console.log("saving", user.name);
+// });
+
+// parsity answer:
+// var saveUser = function (user) {
+//   console.log("saving", user.name);
+// };
+
+// var saveUsers = function () {
+//   var users = [
+//     { id: 15, name: "Bob" },
+//     { id: 23, name: "Jimbo" },
+//     { id: 35, name: "Cathy" },
+//   ];
+
+//   users.forEach(function (u) {
+//     //
+//     saveUser(u);
+
+// for (var i = 0; i < users.length; i++) {
+//   // console.log(users[i].name);
+//   saveUser(users[i]);
+// }
+//   });
+// };
+
+// saveUser();
+
+// var saveUser = function (user) {
+//   console.log("saving", user.name);
+// };
+
+// var saveUsers = function () {
+//   var users = [
+//     { id: 15, name: "Bob" },
+//     { id: 23, name: "Jimbo" },
+//     { id: 35, name: "Cathy" },
+//   ];
+
+//   var looper = function (u) {
+//     saveUser(u);
+//   };
+
+//   users.forEach(looper);
+// };
+
+// saveUser();
+
+//-------------------------------------------------------------------------------
+
+// // Use forEach() to store the box volumes in a volumes array
+// var boxes = [
+//   { length: 10, width: 15, height: 20 },
+//   { length: 15, width: 20, height: 25 },
+//   { length: 20, width: 25, height: 30 },
+//   { length: 25, width: 30, height: 35 },
+//   { length: 30, width: 35, height: 40 },
+// ];
+
+// var volumes = [];
+
+// boxes.forEach(function (index) {
+//   var volume = index.length * index.width * index.height;
+//   volumes.push(volume);
+// });
+
+// console.log(volumes);
